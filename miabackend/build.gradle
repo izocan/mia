@@ -1,7 +1,17 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath group: 'cz.habarta.typescript-generator', name: 'typescript-generator-gradle-plugin', version: '3.1.1185'
+	}
+}
+
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.0.0'
 	id 'io.spring.dependency-management' version '1.1.0'
+	id 'cz.habarta.typescript-generator' version '3.1.1185'
 }
 
 group = 'at.co.mia'
@@ -17,8 +27,22 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	runtimeOnly 'com.h2database:h2'
+	// https://mvnrepository.com/artifact/cz.habarta.typescript-generator/typescript-generator-gradle-plugin
+	implementation group: 'cz.habarta.typescript-generator', name: 'typescript-generator-gradle-plugin', version: '3.1.1185'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+
+
+generateTypeScript {
+	jsonLibrary = 'jackson2'
+	classes = [
+			'at.co.mia.miabackend.component.Project'
+	]
+	outputFile = '../miafrontend/ui/src/api/restAPI.d.ts'
+	outputKind = 'global'
+	namespace = 'Rest';
 }
 
 tasks.named('test') {
