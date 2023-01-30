@@ -22,14 +22,18 @@ export class EditProjectsPage implements OnInit {
     private router: Router,
     public fb: FormBuilder
   ) {
-    this.id = this.actRoute.snapshot.paramMap.get('id');
+    console.log("paramMap: "+ this.actRoute.paramMap);
+    console.log("paramMap: "+ this.actRoute.snapshot.paramMap.get('projectid'));
+    this.id = this.actRoute.snapshot.paramMap.get('projectid');
+
   }
 
   ngOnInit() {
+    console.log("Received projectid = " + this.id)
     this.getProjectData(this.id);
     this.updateProjectForm = this.fb.group({
-      name: [''],
-      address: ['']
+      name: ['testname'],
+      address: ['testname']
     });
   }
 
