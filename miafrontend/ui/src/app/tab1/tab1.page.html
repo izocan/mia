@@ -19,11 +19,15 @@
     </ion-list-header>
     <ion-item *ngFor="let project of Projects" class="item-label item ios in-list ion-focusable hydrated">
       <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
-        <h2>{{project.projectid}} - {{project.name}}</h2>
+        <h2>{{project.name}}</h2>
         <h3>{{project.address}}</h3>
       </ion-label>
       <div class="item-note" item-end>
-        <button [routerLink]="['/edit-projects/', project.projectid]" clear ion-button>
+        <button (click)="deleteProject(project)" style = "background-color: transparent" clear ion-button>
+          <ion-icon name="trash" style="zoom:2.0"></ion-icon>
+        </button>
+
+        <button [routerLink]="['/edit-projects/', project.projectid]" style = "background-color: transparent" clear ion-button>
           <ion-icon name="pencil-outline" style="zoom:2.0"></ion-icon>
         </button>
       </div>

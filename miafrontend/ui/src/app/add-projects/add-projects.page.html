@@ -9,8 +9,13 @@
 
 <ion-content>
 
-  <ion-list class="ion-no-margin ion-no-padding ios list-ios list-lines-full list-ios-lines-full hydrated" lines="full">
+  <!--ion-list class="ion-no-margin ion-no-padding ios list-ios list-lines-full list-ios-lines-full hydrated" lines="full"-->
     <form (ngSubmit)="onFormSubmit()" [formGroup]="projectForm">
+
+      <ion-card>
+      <ion-list-header class="ios hydrated">
+        Allgemein
+      </ion-list-header>
       <ion-item>
         <ion-label position="floating">Name</ion-label>
         <ion-input formControlName="name" required type="text"></ion-input>
@@ -20,13 +25,38 @@
         <ion-input formControlName="address" required type="text">
         </ion-input>
       </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-list-header class="ios hydrated">
+          Aufgaben - Tasks
+        </ion-list-header>
+
+        <ion-list>
+          <ion-item *ngfor = "let task of tasks;">
+            {{task}}
+         </ion-item>
+        </ion-list>
+
+        <div style="text-align: center">
+          <button (click)="addTask()" style = "background-color: transparent; horiz-align: center" clear ion-button>
+            <ion-icon name="add-circle-outline" style="zoom:3.0"></ion-icon>
+          </button>
+        </div>
+
+
+
+
+
+      </ion-card>
+
       <ion-row>
         <ion-col>
           <ion-button color="primary" expand="block" shape="full" type="submit">Projekt hinzufügen</ion-button>
         </ion-col>
       </ion-row>
     </form>
-  </ion-list>
+  <!--/ion-list-->
 
 
 </ion-content>

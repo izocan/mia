@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ProjectService } from '../shared/service/project.service';
+// @ts-ignore
+import { Project } from '../../api/restAPI';
 
 @Component({
   selector: 'app-tab1',
@@ -8,7 +10,7 @@ import { ProjectService } from '../shared/service/project.service';
 })
 export class Tab1Page {
 
-  Projects: any = [];
+  Projects: Project = [];
 
   constructor(private projectService: ProjectService) {
   }
@@ -25,15 +27,12 @@ export class Tab1Page {
   }
 
   // @ts-ignore
-  deleteSong(project, i) {
-    if (window.confirm('Do you want to delete user?')) {
-      this.Projects.deleteSong(project._id)
-        .subscribe(() => {
-            this.Projects.splice(i, 1);
-            console.log('Song deleted!');
-          }
-        );
-    }
+  deleteProject(project) {
+      const indexOfProject: number = this.Projects.indexOf(project);
+      this.Projects.splice(indexOfProject, 1);
+
+      //Todo service erweitern
+
   }
 
 }

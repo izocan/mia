@@ -10,6 +10,9 @@
 <ion-content>
   <ion-list class="ion-no-margin ion-no-padding ios list-ios list-lines-full list-ios-lines-full hydrated" lines="full">
     <form (ngSubmit)="updateForm()" [formGroup]="updateProjectForm">
+      <ion-list-header class="ios hydrated">
+        Allgemein
+      </ion-list-header>
       <ion-item>
         <ion-label position="floating">Name</ion-label>
         <ion-input formControlName="name" required type="text"></ion-input>
@@ -19,6 +22,8 @@
         <ion-input formControlName="address" required type="text">
         </ion-input>
       </ion-item>
+
+
       <ion-row>
         <ion-col>
           <ion-button color="primary" expand="block" shape="full" type="submit">Update</ion-button>

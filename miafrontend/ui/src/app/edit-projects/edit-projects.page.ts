@@ -39,6 +39,7 @@ export class EditProjectsPage implements OnInit {
 
   getProjectData(id: any) {
     this.projectService.getProject(id).subscribe(res => {
+
       this.updateProjectForm.setValue({
         // @ts-ignore
         name: res['name'],

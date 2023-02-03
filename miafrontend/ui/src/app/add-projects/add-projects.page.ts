@@ -3,6 +3,7 @@ import { ProjectService } from '../shared/service/project.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
+
 @Component({
   selector: 'app-add-projects',
   templateUrl: './add-projects.page.html',
@@ -13,6 +14,8 @@ export class AddProjectsPage implements OnInit {
 
   // @ts-ignore
   projectForm: FormGroup;
+
+  tasks: string[]  = [];
 
   constructor(
     private projectService: ProjectService,
@@ -30,6 +33,10 @@ export class AddProjectsPage implements OnInit {
   ngOnInit() {
   }
 
+  addTask(){
+
+    this.tasks.push("Test task - Aufgabe " + this.tasks.length)
+  }
 
   // @ts-ignore
   onFormSubmit() {
